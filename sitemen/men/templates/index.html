@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title|upper}}</title>
+</head>
+<body>
+    <h1>My favourite game is:</h1>
+    {% for G in game %}
+        <p>{{G}}</p>
+    {% endfor %}
+
+    <p>{{num|divisibleby:"5"}}</p>
+</body>
+</html>

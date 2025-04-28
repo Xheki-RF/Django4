@@ -8,7 +8,9 @@ data_db = [
     {
         "id": 1,
         "title": "Angelina Joly",
-        "content": "Biography of Angeline Joly",
+        "content": """GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA 
+        GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO 
+        SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO """,
         "is_published": True,
     },
     {

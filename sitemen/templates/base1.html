@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title|upper}}</title>
+    <link type="text/css" href="{% static 'men/css/styles.css' %}" rel="stylesheet"/>
+</head>
+<body>
+    <ul>
+        <li><a href="{% url 'home' %}">Main page</a></li>
+        {% for opt in menu %}
+        {% if not forloop.last %}<li>{% else %}<li class="last">{% endif %}
+            <a href="{% url opt.url_name %}">{{opt.title}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% block content %} {% endblock %}
+</body>
+</html>

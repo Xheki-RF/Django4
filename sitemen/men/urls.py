@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, re_path, register_converter
 from men.views import *
 from . import converters
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 register_converter(converters.FourDigitYearConverter, "year4")
 
@@ -14,3 +15,5 @@ urlpatterns = [
     path("login/", login, name="login"),
     path("post/<int:post_id>/", show_post, name="post"),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

@@ -9,7 +9,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="home"),
     path("about/", about, name="about"),
-    path("cats/<int:cat_id>/", categories, name="cats_id"),
-    path("cats/<slug:cat_slug>/", categories_by_slug, name="cats"),
-    path("archive/<year4:year>/", archive, name="archive"),
+    path("contacts/", contacts, name="contacts"),
+    path("addpage/", addpage, name="addpage"),
+    path("login/", login, name="login"),
+    path("post/<int:post_id>/", show_post, name="post"),
 ]

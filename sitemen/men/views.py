@@ -8,9 +8,7 @@ data_db = [
     {
         "id": 1,
         "title": "Angelina Joly",
-        "content": """GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA 
-        GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA GOYDA SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO 
-        SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO SVO """,
+        "content": """Biography of Angelina Joly""",
         "is_published": True,
     },
     {
@@ -34,13 +32,20 @@ options = [
     {"title": "Sign in", "url_name": "login"},
 ]
 
+cats_db = [
+    {"id": 1, "name": "Actors"},
+    {"id": 2, "name": "Singers"},
+    {"id": 3, "name": "Sportsmen"},
+]
+
 
 # Create your views here.
 def index(request):
     data = {
         "title": "Main page", 
         "menu": options, 
-        'posts': data_db}
+        'posts': data_db,
+        "selected": 0}
 
     return render(request, "index.html", data)
 
@@ -66,3 +71,10 @@ def contacts(request):
 
 def login(request):
     return HttpResponse("<h1>Sign in</h1>")
+
+
+def show_category(request, cat_id):
+    data = {"title": "Main page", "menu": options, "posts": data_db, "selected": cat_id}
+
+    return render(request, "index.html", data)
+    return index(request)

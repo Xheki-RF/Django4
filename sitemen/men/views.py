@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.template.loader import render_to_string
+from men.models import Women
 
 
 data_db = [
@@ -25,6 +26,7 @@ data_db = [
     },
 ]
 
+
 options = [
     {"title": "About site", "url_name": "about"},
     {"title": "Contact information", "url_name": "contacts"},
@@ -41,17 +43,26 @@ cats_db = [
 
 # Create your views here.
 def index(request):
+    posts = Women.objects.filter(is_published=1)
     data = {
         "title": "Main page", 
         "menu": options, 
-        'posts': data_db,
+        'posts': posts,
         "selected": 0}
 
     return render(request, "index.html", data)
 
 
-def show_post(request, post_id):
-    return HttpResponse(f"Article with id={post_id}")
+def show_post(request, post_slug):
+    post = get_object_or_404(Women, slug=post_slug)
+
+    data = {
+        "title": post.title,
+        "menu": options,
+        "post": post,
+        "cat_selected": 1,
+    }
+    return render(request, 'post.html', data)
 
 def about(request):
     return render(request, "about.html", {"title": "About site", "menu": options})

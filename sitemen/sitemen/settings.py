@@ -34,13 +34,14 @@ WHITENOISE_AUTOREFRESH = True
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'men.apps.MenConfig'
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_extensions",
+    "men.apps.MenConfig",
 ]
 
 MIDDLEWARE = [
@@ -77,9 +78,14 @@ WSGI_APPLICATION = 'sitemen.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "site_men",
+        "USER": "postgres",
+        "PASSWORD": "Pc4423342",
+        "HOST": "localhost",
+        "PORT": 5432,
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.template.loader import render_to_string
-from men.models import Women
+from men.models import Women, Category
 
 
 data_db = [
@@ -32,12 +32,6 @@ options = [
     {"title": "Contact information", "url_name": "contacts"},
     {"title": "Add article", "url_name": "addpage"},
     {"title": "Sign in", "url_name": "login"},
-]
-
-cats_db = [
-    {"id": 1, "name": "Actors"},
-    {"id": 2, "name": "Singers"},
-    {"id": 3, "name": "Sportsmen"},
 ]
 
 
@@ -84,8 +78,14 @@ def login(request):
     return HttpResponse("<h1>Sign in</h1>")
 
 
-def show_category(request, cat_id):
-    data = {"title": "Main page", "menu": options, "posts": data_db, "selected": cat_id}
+def show_category(request, cat_slug):
+    category = get_object_or_404(Category, slug=cat_slug)
+    posts = Women.published.filter(cat_id=category.pk)
+    
+    data = {
+        "title": f"Category {category.name}", 
+        "menu": options, 
+        "posts": posts, 
+        "selected": category.pk}
 
     return render(request, "index.html", data)
-    return index(request)

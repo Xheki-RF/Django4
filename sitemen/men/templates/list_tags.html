@@ -1,0 +1,8 @@
+{% if tags %}
+<p>Tags:</p>
+<ul class="tags-list">
+    {% for t in tags %}
+    <li><a href="{{t.get_abs_url}}">{{t.tag}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
